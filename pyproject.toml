@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "conv-foto"
+name = "photo2drawing"
 version = "0.1.0"
 description = ""
 authors = ["elson"]
@@ -8,8 +8,10 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 opencv-python = "^4.8.1.78"
-matplotlib = "^3.8.1"
 
+
+[tool.poetry.group.dev.dependencies]
+blue = "^0.9.1"
 
 [build-system]
 requires = ["poetry-core"]

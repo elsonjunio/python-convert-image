@@ -1,9 +1,10 @@
 import cv2
 import numpy as np
 
-def convert_to_sketch(image_path):
+
+def convert_to_sketch(input: str, output: str, show=False):
     # Carregar a imagem
-    image = cv2.imread(image_path)
+    image = cv2.imread(input)
 
     # Converter a imagem para escala de cinza
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -23,15 +24,12 @@ def convert_to_sketch(image_path):
     # Combinação da imagem original com as bordas invertidas
     cv2.bitwise_and(blurred_image, blurred_image, dst=sketch, mask=edges_inv)
 
-    cv2.imwrite('/mnt/d/Workspace/5cfbd596-42fd-417f-bba4-2ce11e99fd7c_3.png', sketch)
-    
-    # Exibir a imagem original e a imagem em desenho
-    cv2.imshow('Original Image', image)
-    cv2.imshow('Sketch', sketch)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    cv2.imwrite(output, sketch)
 
-    
-
-# Substitua 'caminho/para/sua/imagem.jpg' pelo caminho da sua própria imagem
-convert_to_sketch('/mnt/d/Workspace/5cfbd596-42fd-417f-bba4-2ce11e99fd7c.png')
+    if show:
+        print('PRESS ENTER ON WINDOW TO CLOSE')
+        # Exibir a imagem original e a imagem em desenho
+        cv2.imshow('Original Image', image)
+        cv2.imshow('Sketch', sketch)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
